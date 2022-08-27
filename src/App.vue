@@ -5,36 +5,18 @@
 </template>
 
 <script>
-// import { analytics } from "./configs/firebase.js";
-// import { doc, getDoc } from "firebase/firestore";
 import { db } from "./configs/firebase.js";
 import { getDocs, collection } from "firebase/firestore";
 import { reactive } from "vue";
 export default {
   name: "AppVue",
-  setup() {
-    // const db = getFirestore();
-    // const colRef = collection(db, "transections");
-    // console.log("check collection", db);
-    // const docRef = doc(analytics, "transections", "SF");
-    // const docSnap = getDoc(docRef);
-    // if (docSnap.exists()) {
-    //   console.log("Document data:", docSnap.data());
-    // } else {
-    //   // doc.data() will be undefined in this case
-    //   console.log("No such document!");
-    // }
-    // console.log(analytics);
-  },
+  setup() {},
   async created() {
     const querySnapshot = await getDocs(collection(db, "transections"));
     querySnapshot.forEach((doc) => {
       let result = reactive([]);
       result = doc.data();
       console.log(result);
-      // console.log("check doc", doc);
-      // console.log("check collection", doc.data());
-      // console.log("check collection name", doc.type);
     });
   },
 };
@@ -42,11 +24,20 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Helvetica Neue, Helvetica, Arial, 文泉驛正黑, WenQuanYi Zen Hei,
+    Hiragino Sans GB, 儷黑 Pro, LiHei Pro, Heiti TC, 微軟正黑體,
+    Microsoft JhengHei UI, Microsoft JhengHei, sans-seri;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --text-color: #ccc;
+}
+html {
+  font-size: 62.5%;
+  line-height: 16px;
 }
 </style>
